@@ -1,0 +1,259 @@
+;;; Full path was not shown unless I inspect the node. Here's the solution path for breadth first search #<NODE {10037B9703}>
+
+;;; #<CONS {10037B9667}>
+;;; --------------------
+;;; A proper list:
+;;; 0: TWO-CANN-BOAT-TO-GOAL
+;;; 1: ONE-CANN-BOAT-TO-START
+;;; 2: TWO-CANN-BOAT-TO-GOAL
+;;; 3: ONE-CANN-BOAT-TO-START
+;;; 4: TWO-MISS-BOAT-TO-GOAL
+;;; 5: CANN-AND-MISS-BOAT-TO-START
+;;; 6: TWO-MISS-BOAT-TO-GOAL
+;;; 7: ONE-CANN-BOAT-TO-START
+;;; 8: TWO-CANN-BOAT-TO-GOAL
+;;; 9: ONE-CANN-BOAT-TO-START
+;;; 10: TWO-CANN-BOAT-TO-GOAL
+
+
+; SLIME 2016-04-19; compiling file "c:/Users/yargn_000/Documents/CSCI 350/HW/searchengine.lisp" (written 16 OCT 2016 04:36:22 PM):
+
+; c:/Users/yargn_000/Documents/CSCI 350/HW/searchengine.fasl written
+; compilation finished in 0:00:00.089
+WARNING:
+   Implicitly creating new generic function COMMON-LISP-USER::RESET-STATISTICS.
+WARNING:
+   Implicitly creating new generic function COMMON-LISP-USER::EQUAL-STATES.
+WARNING: Implicitly creating new generic function COMMON-LISP-USER::COPY-STATE.
+WARNING:
+   Implicitly creating new generic function
+   COMMON-LISP-USER::ESTIMATED-DISTANCE-FROM-GOAL.
+WARNING: Implicitly creating new generic function COMMON-LISP-USER::PRINTER.
+WARNING:
+   Implicitly creating new generic function COMMON-LISP-USER::UPDATE-STATISTICS.
+WARNING:
+   Implicitly creating new generic function COMMON-LISP-USER::SUCCESSOR-NODE.
+WARNING:
+   Implicitly creating new generic function COMMON-LISP-USER::REACHED-THE-GOAL.
+WARNING:
+   Implicitly creating new generic function
+   COMMON-LISP-USER::FINISH-SUCCESSFUL-SEARCH.
+WARNING:
+   Implicitly creating new generic function
+   COMMON-LISP-USER::BREADTH-FIRST-SEARCH.
+WARNING:
+   Implicitly creating new generic function
+   COMMON-LISP-USER::DEPTH-FIRST-SEARCH.
+WARNING:
+   Implicitly creating new generic function
+   COMMON-LISP-USER::DEPTH-FIRST-SEARCH-WITH-DUPLICATE-NODE-DETECTION.
+WARNING:
+   Implicitly creating new generic function
+   COMMON-LISP-USER::DEPTH-FIRST-SEARCH-WITH-DEPTH-LIMIT.
+WARNING:
+   Implicitly creating new generic function COMMON-LISP-USER::BEST-FIRST-SEARCH.
+WARNING:
+   Implicitly creating new generic function
+   COMMON-LISP-USER::STEEPEST-ASCENT-HILL-CLIMBING.
+WARNING:
+   Implicitly creating new generic function
+   COMMON-LISP-USER::OPTIMAL-HEURISTIC-SEARCH.
+WARNING:
+   Implicitly creating new generic function COMMON-LISP-USER::A-STAR-SEARCH.
+; compiling file "c:/Users/yargn_000/Documents/CSCI 350/HW/mc.lisp" (written 16 OCT 2016 10:41:31 PM):
+
+; file: c:/Users/yargn_000/Documents/CSCI 350/HW/mc.lisp
+; in: DEFMETHOD TWO-CANN-BOAT-TO-GOAL (SIDE-STATE)
+;     (LET ((COPY (COPY SELF))
+;           (OLD-CANN-START (CANNIBALS-START SELF))
+;           (OLD-CANN-GOAL (CANNIBALS-GOAL SELF))
+;           (OLD-MISS-GOAL (MISSIONARIES-GOAL SELF))
+;           (OLD-MISS-START (MISSIONARIES-START SELF)))
+;       (WHEN
+;           (AND (>= OLD-CANN-START 2)
+;                (OR (= OLD-MISS-GOAL 0) (>= OLD-MISS-GOAL #)))
+;         (SETF (BOAT-START COPY) NIL)
+;         (SETF (BOAT-GOAL COPY) T)
+;         (SETF (CANNIBALS-START COPY) (- OLD-CANN-START 2))
+;         (SETF (CANNIBALS-GOAL COPY) (+ OLD-CANN-GOAL 2))
+;         COPY))
+; 
+; caught STYLE-WARNING:
+;   The variable OLD-MISS-START is defined but never used.
+
+; in: DEFMETHOD ONE-CANN-BOAT-TO-GOAL (SIDE-STATE)
+;     (LET ((COPY (COPY SELF))
+;           (OLD-MISS-START (MISSIONARIES-START SELF))
+;           (OLD-CANN-START (CANNIBALS-START SELF))
+;           (OLD-CANN-GOAL (CANNIBALS-GOAL SELF))
+;           (OLD-MISS-GOAL (MISSIONARIES-GOAL SELF)))
+;       (WHEN
+;           (AND (>= OLD-CANN-START 1)
+;                (OR (< OLD-CANN-GOAL OLD-MISS-GOAL) (= OLD-MISS-GOAL 0)))
+;         (SETF (BOAT-START COPY) NIL)
+;         (SETF (BOAT-GOAL COPY) T)
+;         (SETF (CANNIBALS-START COPY) (- OLD-CANN-START 1))
+;         (SETF (CANNIBALS-GOAL COPY) (+ OLD-CANN-GOAL 1))
+;         COPY))
+; 
+; caught STYLE-WARNING:
+;   The variable OLD-MISS-START is defined but never used.
+
+; in: DEFMETHOD ONE-CANN-BOAT-TO-START (SIDE-STATE)
+;     (LET ((COPY (COPY SELF))
+;           (OLD-MISS-START (MISSIONARIES-START SELF))
+;           (OLD-CANN-START (CANNIBALS-START SELF))
+;           (OLD-MISS-GOAL (MISSIONARIES-GOAL SELF))
+;           (OLD-CANN-GOAL (CANNIBALS-GOAL SELF)))
+;       (WHEN
+;           (AND (>= OLD-CANN-GOAL 1)
+;                (OR (< OLD-CANN-START OLD-MISS-START) (= OLD-MISS-START 0)))
+;         (SETF (BOAT-START COPY) T)
+;         (SETF (BOAT-GOAL COPY) NIL)
+;         (SETF (CANNIBALS-START COPY) (+ OLD-CANN-START 1))
+;         (SETF (CANNIBALS-GOAL COPY) (- OLD-CANN-GOAL 1))
+;         COPY))
+; 
+; caught STYLE-WARNING:
+;   The variable OLD-MISS-GOAL is defined but never used.
+
+; in: DEFMETHOD TWO-CANN-BOAT-TO-START (SIDE-STATE)
+;     (LET ((COPY (COPY SELF))
+;           (OLD-MISS-START (MISSIONARIES-START SELF))
+;           (OLD-CANN-START (CANNIBALS-START SELF))
+;           (OLD-MISS-GOAL (MISSIONARIES-GOAL SELF))
+;           (OLD-CANN-GOAL (CANNIBALS-GOAL SELF)))
+;       (WHEN
+;           (AND (> OLD-CANN-GOAL 1)
+;                (OR (= OLD-MISS-START 0) (> OLD-MISS-START #)))
+;         (SETF (BOAT-START COPY) T)
+;         (SETF (BOAT-GOAL COPY) NIL)
+;         (SETF (CANNIBALS-START COPY) (+ OLD-CANN-START 2))
+;         (SETF (CANNIBALS-GOAL COPY) (- OLD-CANN-GOAL 2))
+;         COPY))
+; 
+; caught STYLE-WARNING:
+;   The variable OLD-MISS-GOAL is defined but never used.
+
+; in: DEFMETHOD TWO-MISS-BOAT-TO-START (SIDE-STATE)
+;     (LET ((COPY (COPY SELF))
+;           (OLD-MISS-START (MISSIONARIES-START SELF))
+;           (OLD-CANN-START (CANNIBALS-START SELF))
+;           (OLD-MISS-GOAL (MISSIONARIES-GOAL SELF))
+;           (OLD-CANN-GOAL (CANNIBALS-GOAL SELF)))
+;       (WHEN (>= OLD-MISS-GOAL 2)
+;         (SETF (BOAT-START COPY) T)
+;         (SETF (BOAT-GOAL COPY) NIL)
+;         (SETF (MISSIONARIES-START COPY) (+ OLD-MISS-START 2))
+;         (SETF (MISSIONARIES-GOAL COPY) (- OLD-MISS-GOAL 2))
+;         COPY))
+; 
+; caught STYLE-WARNING:
+;   The variable OLD-CANN-START is defined but never used.
+; 
+; caught STYLE-WARNING:
+;   The variable OLD-CANN-GOAL is defined but never used.
+; 
+; compilation unit finished
+;   caught 6 STYLE-WARNING conditions
+
+; c:/Users/yargn_000/Documents/CSCI 350/HW/mc.fasl written
+; compilation finished in 0:00:00.079
+WARNING: Implicitly creating new generic function COMMON-LISP-USER::COPY.
+WARNING:
+   Implicitly creating new generic function COMMON-LISP-USER::ALL-AT-GOAL-SIDE.
+WARNING:
+   Implicitly creating new generic function
+   COMMON-LISP-USER::TWO-CANN-BOAT-TO-GOAL.
+WARNING:
+   Implicitly creating new generic function
+   COMMON-LISP-USER::TWO-MISS-BOAT-TO-GOAL.
+WARNING:
+   Implicitly creating new generic function
+   COMMON-LISP-USER::ONE-CANN-BOAT-TO-GOAL.
+WARNING:
+   Implicitly creating new generic function
+   COMMON-LISP-USER::ONE-MISS-BOAT-TO-GOAL.
+WARNING:
+   Implicitly creating new generic function
+   COMMON-LISP-USER::CANN-AND-MISS-BOAT-TO-GOAL.
+WARNING:
+   Implicitly creating new generic function
+   COMMON-LISP-USER::CANN-AND-MISS-BOAT-TO-START.
+WARNING:
+   Implicitly creating new generic function
+   COMMON-LISP-USER::ONE-CANN-BOAT-TO-START.
+WARNING:
+   Implicitly creating new generic function
+   COMMON-LISP-USER::ONE-MISS-BOAT-TO-START.
+WARNING:
+   Implicitly creating new generic function
+   COMMON-LISP-USER::TWO-CANN-BOAT-TO-START.
+WARNING:
+   Implicitly creating new generic function
+   COMMON-LISP-USER::TWO-MISS-BOAT-TO-START.
+
+CL-USER> (breadth-first-search *missionaries-and-cannibals*)
+
+Performing breadth first search on problem missionaries-and-cannibals.
+#<SEARCH-STATISTICS {1002F9E513}>
+  [standard-object]
+
+Slots with :INSTANCE allocation:
+  NODES-VISITED                = 2622
+  MAXIMUM-LENGTH-OF-NODE-LIST  = 1262
+  LENGTH-OF-SOLUTION           = 11
+  MAXIMUM-DEPTH                = 12
+%
+#<NODE {10037B9703}>
+  [standard-object]
+
+Slots with :INSTANCE allocation:
+  STATE      = #<SIDE-STATE {10037B95F3}>
+  PROBLEM    = #<PROBLEM {1002C15453}>
+  PATH       = (TWO-CANN-BOAT-TO-GOAL ONE-CANN-BOAT-TO-START TWO-CANN-BOAT-TO-GOAL..
+  ANCESTORS  = NIL
+#<NODE {10037B9703}>
+CL-USER> (depth-first-search-with-duplicate-node-detection *missionaries-and-cannibals*)
+
+Performing depth first search with duplicate node detection on problem missionaries-and-cannibals.
+#<SEARCH-STATISTICS {10045670C3}>
+  [standard-object]
+
+Slots with :INSTANCE allocation:
+  NODES-VISITED                = 18
+  MAXIMUM-LENGTH-OF-NODE-LIST  = 4
+  LENGTH-OF-SOLUTION           = 11
+  MAXIMUM-DEPTH                = 11
+%
+#<NODE {100462C033}>
+  [standard-object]
+
+Slots with :INSTANCE allocation:
+  STATE      = #<SIDE-STATE {100462BF23}>
+  PROBLEM    = #<PROBLEM {1002C15453}>
+  PATH       = (TWO-CANN-BOAT-TO-GOAL ONE-CANN-BOAT-TO-START TWO-CANN-BOAT-TO-GOAL..
+  ANCESTORS  = NIL
+#<NODE {100462C033}>
+CL-USER> (depth-first-search-with-depth-limit *missionaries-and-cannibals*)
+
+Performing depth first search with depth limit on problem missionaries-and-cannibals.
+#<SEARCH-STATISTICS {10047E29B3}>
+  [standard-object]
+
+Slots with :INSTANCE allocation:
+  NODES-VISITED                = 19
+  MAXIMUM-LENGTH-OF-NODE-LIST  = 11
+  LENGTH-OF-SOLUTION           = 11
+  MAXIMUM-DEPTH                = 11
+%
+#<NODE {10047E6AE3}>
+  [standard-object]
+
+Slots with :INSTANCE allocation:
+  STATE      = #<SIDE-STATE {10047E69D3}>
+  PROBLEM    = #<PROBLEM {1002C15453}>
+  PATH       = (TWO-CANN-BOAT-TO-GOAL ONE-CANN-BOAT-TO-START TWO-CANN-BOAT-TO-GOAL..
+  ANCESTORS  = NIL
+#<NODE {10047E6AE3}>
+CL-USER> 
